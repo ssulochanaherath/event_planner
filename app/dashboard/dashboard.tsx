@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#1e1e2d', // Dark theme
+    backgroundColor: '#1e1e2d',
     paddingHorizontal: 20,
   },
   title: {
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   button: {
-    backgroundColor: '#ff5c5c', // Accent color
+    backgroundColor: '#ff5c5c', 
     paddingVertical: 15,
     borderRadius: 10,
     marginVertical: 10,

@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import LoginScreen from '../dashboard/login'; // Adjust path as needed
-import DashboardScreen from '../dashboard/dashboard'; // Adjust path as needed
+import LoginScreen from '../dashboard/login'; 
+import DashboardScreen from '../dashboard/dashboard'; 
 
 const Stack = createStackNavigator();
 
@@ -13,12 +13,12 @@ const App = () => {
         <Stack.Screen
           name="Login"
           component={LoginScreen}
-          options={{ headerShown: false }} // Hide header for login screen
+          options={{ headerShown: false }} 
         />
         <Stack.Screen
           name="Dashboard"
           component={DashboardScreen} 
-          options={{ headerShown: false }} // Hide header for dashboard
+          options={{ headerShown: false }} 
         />
       </Stack.Navigator>
     </NavigationContainer>

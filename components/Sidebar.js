@@ -11,7 +11,7 @@ export default function Sidebar(props) {
       {/* Header with Profile Image */}
       <View style={styles.header}>
         <Image
-          source={{ uri: '../../assets/images/partial-react-logo.png' }} // Replace with actual profile image
+          source={{ uri: '../../assets/images/partial-react-logo.png' }}e
           style={styles.profileImage}
         />
         <Text style={styles.title}>Welcome, User</Text>
@@ -42,7 +42,7 @@ export default function Sidebar(props) {
               routes: [{ name: 'Login' }],
             })
           }
-          labelStyle={[styles.label, { color: '#ff5c5c' }]} // Logout in red
+          labelStyle={[styles.label, { color: '#ff5c5c' }]}
         />
       </View>
     </DrawerContentScrollView>
@@ -52,7 +52,7 @@ export default function Sidebar(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1e1e2d', // Dark theme background
+    backgroundColor: '#1e1e2d', 
   },
   header: {
     alignItems: 'center',

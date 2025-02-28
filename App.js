@@ -6,7 +6,7 @@ import LoginScreen from '../event_planner/app/dashboard/index';
 import DashboardScreen from '../event_planner/app/dashboard/dashboard';
 import MovieScreen from '../event_planner/app/dashboard/movie';
 import TicketBookingScreen from '../event_planner/app/dashboard/ticket';
-import Sidebar from './components/Sidebar'; // Sidebar for drawer content
+import Sidebar from './components/Sidebar'; 
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -19,26 +19,26 @@ function App() {
         <Stack.Screen
           name="Login"
           component={LoginScreen}
-          options={{ headerShown: false }} // Hide header for login screen
+          options={{ headerShown: false }} 
         />
 
         {/* Dashboard Drawer after Login */}
         <Stack.Screen
           name="Dashboard"
           component={DashboardDrawer}
-          options={{ headerShown: false }} // Hide header for dashboard
+          options={{ headerShown: false }} 
         />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
-// Drawer Navigator for Dashboard and Sidebar
+
 function DashboardDrawer() {
   return (
     <Drawer.Navigator
       initialRouteName="Dashboard"
-      drawerContent={(props) => <Sidebar {...props} />} // Sidebar component
+      drawerContent={(props) => <Sidebar {...props} />} 
     >
       <Drawer.Screen name="Dashboard" component={DashboardScreen} />
       <Drawer.Screen name="Movies" component={MovieScreen} />

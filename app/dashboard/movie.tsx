@@ -12,7 +12,7 @@ export default function MovieScreen() {
       <FlatList
         data={movies}
         keyExtractor={(item) => item.id}
-        numColumns={2} // Grid layout
+        numColumns={2} 
         renderItem={({ item }) => (
           <TouchableOpacity style={styles.movieCard}>
             <Image source={item.image} style={styles.movieImage} />
@@ -27,7 +27,7 @@ export default function MovieScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1e1e2d', // Dark background
+    backgroundColor: '#1e1e2d', 
     padding: 20,
     alignItems: 'center',
   },

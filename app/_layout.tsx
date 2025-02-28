@@ -1,5 +1,5 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import Sidebar from '../components/Sidebar'; // Ensure correct path
+import Sidebar from '../components/Sidebar'; 
 
 import LoginScreen from './dashboard/login';
 import DashboardScreen from './dashboard/dashboard';

@@ -8,10 +8,10 @@ export default function LoginScreen() {
   const [error, setError] = useState('');
   const navigation = useNavigation();
 
-  // Function to handle login
+
   const handleLogin = () => {
     if (email && password) {
-      navigation.navigate('Dashboard'); // Navigate to Dashboard after login
+      navigation.navigate('Dashboard'); 
     } else {
       setError('Please enter valid credentials');
     }
