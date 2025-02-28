@@ -2,11 +2,11 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import LoginScreen from './screens/LoginScreen';
-import DashboardScreen from './screens/DashboardScreen';
-import MovieScreen from './screens/MovieScreen';
-import TicketBookingScreen from './screens/TicketBookingScreen';
-import Sidebar from './components/Sidebar';
+import LoginScreen from '../event_planner/app/dashboard/index';
+import DashboardScreen from '../event_planner/app/dashboard/dashboard';
+import MovieScreen from '../event_planner/app/dashboard/movie';
+import TicketBookingScreen from '../event_planner/app/dashboard/ticket';
+import Sidebar from './components/Sidebar'; // Sidebar for drawer content
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -38,7 +38,7 @@ function DashboardDrawer() {
   return (
     <Drawer.Navigator
       initialRouteName="Dashboard"
-      drawerContent={(props) => <Sidebar {...props} />}
+      drawerContent={(props) => <Sidebar {...props} />} // Sidebar component
     >
       <Drawer.Screen name="Dashboard" component={DashboardScreen} />
       <Drawer.Screen name="Movies" component={MovieScreen} />

@@ -6,8 +6,8 @@ import { StackNavigationProp } from '@react-navigation/stack'; // Import StackNa
 type RootStackParamList = {
   Login: undefined;
   Dashboard: undefined;
-  Movies: undefined; // Add Movies route
-  'Ticket Booking': undefined; // Add Ticket Booking route
+  Movies: undefined;
+  'Ticket Booking': undefined;
 };
 
 // Define the type for DashboardScreen navigation prop
