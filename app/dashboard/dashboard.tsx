@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
-import { StackNavigationProp } from '@react-navigation/stack'; // Import StackNavigationProp
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
-// Define the types for your stack navigation
+// Define types for navigation
 type RootStackParamList = {
   Login: undefined;
   Dashboard: undefined;
@@ -10,7 +10,6 @@ type RootStackParamList = {
   'Ticket Booking': undefined;
 };
 
-// Define the type for DashboardScreen navigation prop
 type DashboardScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Dashboard'>;
 
 type DashboardScreenProps = {
@@ -20,9 +19,19 @@ type DashboardScreenProps = {
 const DashboardScreen = ({ navigation }: DashboardScreenProps) => {
   return (
     <View style={styles.container}>
-      <Text>Welcome to the Dashboard</Text>
-      <Button title="Go to Movies" onPress={() => navigation.navigate('Movies')} />
-      <Button title="Go to Ticket Booking" onPress={() => navigation.navigate('Ticket Booking')} />
+      {/* Welcome Message */}
+      <Text style={styles.title}>🎬 Welcome to the Dashboard</Text>
+
+      {/* Buttons */}
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Movies')}>
+          <Text style={styles.buttonText}>🎥 Available Movies</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Ticket Booking')}>
+          <Text style={styles.buttonText}>🎟 Book Tickets</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -32,6 +41,34 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#1e1e2d', // Dark theme
+    paddingHorizontal: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#ffffff',
+    marginBottom: 20,
+  },
+  buttonContainer: {
+    width: '100%',
+  },
+  button: {
+    backgroundColor: '#ff5c5c', // Accent color
+    paddingVertical: 15,
+    borderRadius: 10,
+    marginVertical: 10,
+    alignItems: 'center',
+    width: '100%',
+    shadowColor: '#ff5c5c',
+    shadowOpacity: 0.4,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 5,
+  },
+  buttonText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#fff',
   },
 });
 
