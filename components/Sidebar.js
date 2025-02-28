@@ -1,6 +1,6 @@
 import React from 'react';
-import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import { View, Text, StyleSheet } from 'react-native';
+import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import { useNavigation } from '@react-navigation/native';
 
 export default function Sidebar(props) {

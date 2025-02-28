@@ -1,38 +1,50 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { StatusBar } from 'expo-status-bar';
-
-import LoginScreen from './auth/login';
-import RootLayout from './_layout'; // Drawer navigation
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import LoginScreen from './screens/LoginScreen';
+import DashboardScreen from './screens/DashboardScreen';
+import MovieScreen from './screens/MovieScreen';
+import TicketBookingScreen from './screens/TicketBookingScreen';
+import Sidebar from './components/Sidebar';
 
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
-export default function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login state
-
-  useEffect(() => {
-    // Check if the user is logged in, set state accordingly
-    // For now, just simulate it
-    const userLoggedIn = false; // Change based on real logic
-    setIsLoggedIn(userLoggedIn);
-  }, []);
-
+function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={isLoggedIn ? "Dashboard" : "Login"}>
+      <Stack.Navigator initialRouteName="Login">
+        {/* Login Screen */}
         <Stack.Screen
           name="Login"
           component={LoginScreen}
-          options={{ headerShown: false }}
+          options={{ headerShown: false }} // Hide header for login screen
         />
+
+        {/* Dashboard Drawer after Login */}
         <Stack.Screen
           name="Dashboard"
-          component={RootLayout}
-          options={{ headerShown: false }}
+          component={DashboardDrawer}
+          options={{ headerShown: false }} // Hide header for dashboard
         />
       </Stack.Navigator>
-      <StatusBar style="auto" />
     </NavigationContainer>
   );
 }
+
+// Drawer Navigator for Dashboard and Sidebar
+function DashboardDrawer() {
+  return (
+    <Drawer.Navigator
+      initialRouteName="Dashboard"
+      drawerContent={(props) => <Sidebar {...props} />}
+    >
+      <Drawer.Screen name="Dashboard" component={DashboardScreen} />
+      <Drawer.Screen name="Movies" component={MovieScreen} />
+      <Drawer.Screen name="Ticket Booking" component={TicketBookingScreen} />
+    </Drawer.Navigator>
+  );
+}
+
+export default App;
