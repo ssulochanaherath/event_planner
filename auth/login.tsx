@@ -1,17 +1,15 @@
-// app/auth/login.tsx
 import React, { useState } from 'react';
 import { View, TextInput, Button, Text, StyleSheet } from 'react-native';
-import { useRouter } from 'expo-router';
+import { useNavigation } from '@react-navigation/native';
 
 export default function LoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const router = useRouter();
+  const navigation = useNavigation();
 
   const handleLogin = () => {
     if (email && password) {
-      // Simulate login success
-      router.push('/dashboard');
+      navigation.replace('Dashboard'); // Navigate to Dashboard after login
     } else {
       alert('Please enter valid credentials');
     }

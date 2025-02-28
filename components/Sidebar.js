@@ -1,17 +1,21 @@
-import { DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navigation/drawer';
+import React from 'react';
+import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import { View, Text, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Sidebar(props) {
+  const navigation = useNavigation();
+
   return (
     <DrawerContentScrollView {...props}>
       <View style={styles.header}>
         <Text style={styles.title}>My App</Text>
       </View>
-      <DrawerItemList {...props} />
-      <DrawerItem 
-        label="Logout" 
-        onPress={() => props.navigation.replace('auth/login')} 
-      />
+
+      <DrawerItem label="Dashboard" onPress={() => navigation.navigate('Dashboard')} />
+      <DrawerItem label="Movies" onPress={() => navigation.navigate('Movies')} />
+      <DrawerItem label="Ticket Booking" onPress={() => navigation.navigate('Ticket Booking')} />
+      <DrawerItem label="Logout" onPress={() => navigation.replace('Login')} />
     </DrawerContentScrollView>
   );
 }
