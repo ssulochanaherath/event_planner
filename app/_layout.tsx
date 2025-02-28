@@ -1,39 +1,30 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
+// app/_layout.tsx
+import React from 'react';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+import { StyleSheet, View, Text } from 'react-native';
+import { useRouter } from 'expo-router';
 
-import { useColorScheme } from '@/hooks/useColorScheme';
+import DashboardScreen from './dashboard/index';
+import MovieScreen from './dashboard/movie';
+import TicketBookingScreen from './dashboard/ticket';
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
+const Drawer = createDrawerNavigator();
+
+function Sidebar() {
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen name="Dashboard" component={DashboardScreen} />
+      <Drawer.Screen name="Movie" component={MovieScreen} />
+      <Drawer.Screen name="Ticket Booking" component={TicketBookingScreen} />
+    </Drawer.Navigator>
+  );
+}
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
-
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <NavigationContainer>
+      <Sidebar />
+    </NavigationContainer>
   );
 }
