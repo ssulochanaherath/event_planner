@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 
-// Define types for navigation
 type RootStackParamList = {
   Login: undefined;
   Dashboard: undefined;
