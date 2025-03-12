@@ -26,13 +26,13 @@ export default function TicketBookingScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>🎟 Select Your Seats</Text>
+      <Text style={styles.title}>🎟 Book Your Seat</Text>
 
-      {/* Seat Grid */}
       <FlatList
         data={seats}
         keyExtractor={(item) => item.id}
         numColumns={4}
+        contentContainerStyle={styles.seatGrid}
         renderItem={({ item }) => (
           <TouchableOpacity
             style={[
@@ -40,14 +40,14 @@ export default function TicketBookingScreen() {
               selectedSeats.includes(item.id) && styles.selectedSeat,
             ]}
             onPress={() => toggleSeatSelection(item.id)}
+            activeOpacity={0.7}
           >
             <Text style={styles.seatText}>{item.id}</Text>
           </TouchableOpacity>
         )}
       />
 
-      {/* Confirm Button */}
-      <TouchableOpacity style={styles.bookButton} onPress={handleBooking}>
+      <TouchableOpacity style={styles.bookButton} onPress={handleBooking} activeOpacity={0.8}>
         <Text style={styles.bookButtonText}>Confirm Booking</Text>
       </TouchableOpacity>
     </View>
@@ -57,46 +57,60 @@ export default function TicketBookingScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1e1e2d',
-    padding: 20,
+    backgroundColor: '#121212',
+    padding: 24,
     alignItems: 'center',
+    justifyContent: 'center',
   },
   title: {
-    fontSize: 24,
-    fontWeight: 'bold',
+    fontSize: 28,
+    fontWeight: '600',
     color: '#ffffff',
-    marginBottom: 20,
+    marginBottom: 30,
+    letterSpacing: 1,
+  },
+  seatGrid: {
+    alignItems: 'center',
   },
   seat: {
-    width: 50,
-    height: 50,
-    backgroundColor: '#444',
-    margin: 8,
+    width: 60,
+    height: 60,
+    backgroundColor: '#2c2c38',
+    margin: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 8,
+    borderRadius: 16,
+    shadowColor: '#000',
+    shadowOpacity: 0.2,
+    shadowOffset: { width: 2, height: 2 },
+    elevation: 4,
   },
   selectedSeat: {
-    backgroundColor: '#ff5c5c',
+    backgroundColor: '#00c896',
+    shadowColor: '#00c896',
+    shadowOpacity: 0.4,
+    elevation: 6,
   },
   seatText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: 18,
+    fontWeight: '500',
   },
   bookButton: {
-    marginTop: 20,
-    backgroundColor: '#ff5c5c',
-    paddingVertical: 15,
-    paddingHorizontal: 40,
-    borderRadius: 10,
-    shadowColor: '#ff5c5c',
-    shadowOpacity: 0.4,
+    marginTop: 30,
+    backgroundColor: '#00c896',
+    paddingVertical: 16,
+    paddingHorizontal: 50,
+    borderRadius: 30,
+    shadowColor: '#00c896',
+    shadowOpacity: 0.5,
     shadowOffset: { width: 0, height: 4 },
-    elevation: 5,
+    elevation: 8,
   },
   bookButtonText: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: '600',
     color: '#fff',
+    letterSpacing: 0.5,
   },
 });
